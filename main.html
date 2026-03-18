@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AERO Supply – Navbar</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+CiAgPHJlY3Qgd2lkdGg9JzY0JyBoZWlnaHQ9JzY0JyBmaWxsPScjMWEyZTQ1Jy8+CiAgPHRleHQgeD0nMzInIHk9JzUwJyAKICAgIGZvbnQtZmFtaWx5PSdCYXJsb3cgQ29uZGVuc2VkLCBBcmlhbCBOYXJyb3csIEFyaWFsLCBzYW5zLXNlcmlmJyAKICAgIGZvbnQtd2VpZ2h0PSc3MDAnIAogICAgZm9udC1zdHlsZT0naXRhbGljJwogICAgZm9udC1zaXplPSc1MicgCiAgICBmaWxsPSd3aGl0ZScgCiAgICB0ZXh0LWFuY2hvcj0nbWlkZGxlJyAKICAgIGxldHRlci1zcGFjaW5nPSctMic+QTwvdGV4dD4KPC9zdmc+" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+ 
+    :root {
+      --top-bg: #f2f2f2;
+      --nav-bg: #1a2e45;
+      --nav-hover: #2a4565;
+      --accent: #e8334a;
+      
+      
+      --text-dark: #111;
+      --text-light: #fff;
+      --dropdown-bg: #ffffff;
+      --border: #e0e0e0;
+      --font-head: 'Barlow Condensed', sans-serif;
+      
+      --font-body: 'Barlow', sans-serif;
+    }
+ 
+    body { font-family: var(--font-body); background: #fff; }
+ 
+    /* ─── TOP BAR ─────────────────────────────────────────────────────── */
+    .top-bar {
+      background: var(--top-bg);
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+ 
+    .top-bar-inner {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      padding: 0 36px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      justify-content: space-between;
+    }
+ 
+    .top-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+ 
+    .logo {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -2px;
+      color: var(--text-dark);
+      text-decoration: none;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .logo span { font-style: italic; }
+ 
+    .search-wrap {
+      width: 200px;
+      position: relative;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 6px 32px 6px 11px;
+      border: 1.5px solid #ccc;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      font-family: var(--font-body);
+      background: #fff;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-wrap input::placeholder { color: #666; }
+    .search-wrap input:focus { border-color: var(--accent2); }
+    .search-wrap button {
+      position: absolute;
+      right: 10px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: #555;
+      display: flex; align-items: center;
+    }
+ 
+    .top-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .top-links a {
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+    .top-links a:hover { opacity: .55; }
+ 
+    .top-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .top-icons a {
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      transition: opacity .2s;
+    }
+    .top-icons a:hover { opacity: .55; }
+ 
+    /* ─── MAIN NAV ────────────────────────────────────────────────────── */
+    .main-nav {
+      background: var(--nav-bg);
+      
+      position: sticky;
+      top: 51px;
+      z-index: 190;
+    }
+ 
+    .nav-inner {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      list-style: none;
+      padding: 0;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+ 
+    .nav-item {
+      position: relative;
+      list-style: none;
+    }
+ 
+    .nav-item > a,
+    .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 12px 15px;
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .2s, background .2s;
+      line-height: 1;
+    }
+    .nav-item > a:hover,
+    .nav-item > button:hover,
+    .nav-item.open > a,
+    .nav-item.open > button {
+      background: var(--nav-hover);
+    }
+ 
+    .chevron {
+      width: 10px; height: 10px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+    .nav-item.open .chevron { transform: rotate(180deg); }
+ 
+    /* ─── DROPDOWN ────────────────────────────────────────────────────── */
+    .dropdown {
+      display: none;
+      position: fixed;
+      top: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dropdown-bg);
+      border-top: 3px solid var(--nav-bg);
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+      z-index: 300;
+      width: 90vw;
+      max-width: 1100px;
+    }
+ 
+    .nav-item:last-child .dropdown,
+    .nav-item:nth-last-child(2) .dropdown,
+    .nav-item:nth-last-child(3) .dropdown,
+    .nav-item:nth-last-child(4) .dropdown,
+    .nav-item:nth-last-child(5) .dropdown {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+ 
+    .nav-item.open .dropdown { display: flex; flex-direction: column; }
+ 
+    .dropdown-banner {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .dropdown-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .dropdown-banner-label {
+      position: absolute;
+      bottom: 10px;
+      left: 24px;
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.6);
+    }
+ 
+    .dropdown-body {
+      display: flex;
+      flex: 1;
+      padding: 20px 24px 20px;
+      gap: 26px;
+    }
+ 
+    .dropdown-col {
+      flex: 1;
+      min-width: 140px;
+    }
+    .dropdown-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--text-dark);
+    }
+    .dropdown-col ul { list-style: none; }
+    .dropdown-col ul li { margin-bottom: 4px; }
+    .dropdown-col ul li a {
+      font-size: 0.76rem;
+      color: #333;
+      text-decoration: none;
+      transition: color .15s;
+      line-height: 1.4;
+    }
+    .dropdown-col ul li a:hover { color: var(--accent); }
+ 
+    /* ─── MOBILE HAMBURGER ───────────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text-light);
+    }
+    .hamburger svg { width: 24px; height: 24px; }
+ 
+    /* ─── MOBILE OVERLAY ─────────────────────────────────────────────── */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      z-index: 400;
+      pointer-events: none;
+      transition: background .35s ease;
+    }
+    .mobile-menu.open {
+      background: rgba(0,0,0,.5);
+      pointer-events: all;
+    }
+ 
+    .mobile-panel {
+      position: absolute;
+      top: 0; left: 0;
+      width: min(305px, 92vw);
+      height: 100%;
+      background: #fff;
+      box-shadow: 6px 0 32px rgba(0,0,0,.18);
+      transform: translateX(-105%);
+      transition: transform .38s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-menu.open .mobile-panel { transform: translateX(0); }
+ 
+    /* Header */
+    .mobile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 18px;
+      background: var(--nav-bg);
+      flex-shrink: 0;
+    }
+    .mobile-header .logo { color: #fff; font-size: 1.9rem; letter-spacing: 2px; }
+    .mobile-close {
+      background: none; border: none; color: rgba(255,255,255,.5);
+      cursor: pointer; font-size: 1.6rem; line-height: 1;
+      transition: color .2s;
+    }
+    .mobile-close:hover { color: #fff; }
+ 
+    /* Search */
+    .mobile-search {
+      padding: 11px 18px;
+      border-bottom: 1px solid #2a2a2a;
+      flex-shrink: 0;
+      background: #f4f4f4;
+    }
+    .mobile-search input {
+      width: 100%;
+      padding: 8px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      background: #fff;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .mobile-search input:focus { border-color: var(--nav-bg); }
+ 
+    /* Pages container — slides horizontally */
+    .mobile-pages {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+ 
+    .mobile-page {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      transition: transform .32s cubic-bezier(.4,0,.2,1);
+      background: #fff;
+    }
+ 
+    /* Page states */
+    .mobile-page.active        { transform: translateX(0);     pointer-events: all; }
+    .mobile-page.hidden-right  { transform: translateX(100%);  pointer-events: none; }
+    .mobile-page.hidden-left   { transform: translateX(-30%);  pointer-events: none; }
+ 
+    /* Back button */
+    .mobile-back {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 11px 18px;
+      background: #f0f3f7;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--nav-bg);
+      transition: background .15s;
+    }
+    .mobile-back:hover { background: #e4e9f0; }
+    .mobile-back svg { width: 16px; height: 16px; stroke: var(--nav-bg); fill: none; stroke-width: 2.2; flex-shrink: 0; }
+ 
+    /* Main menu nav items */
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 13px 18px;
+      background: none;
+      border: none;
+      border-bottom: 1px solid #f0f0f0;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #1a1a1a;
+      letter-spacing: 0;
+      text-transform: none;
+      text-decoration: none;
+      transition: background .15s, color .15s;
+      text-transform: uppercase;
+    }
+    .mobile-nav-item svg { width: 16px; height: 16px; stroke: #bbb; fill: none; stroke-width: 2; flex-shrink: 0; transition: stroke .15s; }
+    .mobile-nav-item:hover { background: #f5f8ff; color: var(--nav-bg); }
+    .mobile-nav-item:hover svg { stroke: var(--nav-bg); }
+ 
+    /* Sub-page title */
+    .mobile-sub-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 18px;
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--nav-bg);
+      border-bottom: 1px solid #ddd;
+      background: #f8f8f8;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .mobile-sub-title:hover {
+      background: #f0f4fa;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .mobile-sub-title::after {
+      content: '→';
+      font-size: 1rem;
+      opacity: 0.4;
+      transition: opacity .15s, transform .15s;
+    }
+    .mobile-sub-title:hover::after {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+ 
+    /* Sub-page sections */
+    .mobile-sub-section { padding: 0 18px 14px; }
+    .mobile-sub-section h4 {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      margin-bottom: 0;
+      padding: 8px 12px;
+      color: var(--nav-bg);
+      background: #eef2f8;
+      border-left: 3px solid var(--nav-bg);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .mobile-sub-section h4:hover { background: #dce4f0; }
+    .mobile-sub-section ul { list-style: none; padding: 0; margin: 0; }
+    .mobile-sub-section ul li a {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      font-weight: 400;
+      color: #222;
+      text-decoration: none;
+      border-bottom: 1px solid #f4f4f4;
+      transition: color .15s, padding-left .15s;
+    }
+    .mobile-sub-section ul li a:hover { color: var(--nav-bg); padding-left: 6px; }
+    .mobile-sub-section ul li:last-child a { border-bottom: none; }
+ 
+    /* Extra links at bottom of main page */
+    .mobile-extra {
+      border-top: 2px solid #f0f0f0;
+      padding: 13px 18px 20px;
+      margin-top: 4px;
+    }
+    .mobile-extra a {
+      display: block;
+      padding: 9px 0;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: #666;
+      text-decoration: none;
+      border-bottom: 1px solid #f4f4f4;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .15s;
+    }
+    .mobile-extra a:last-child { border-bottom: none; }
+    .mobile-extra a:hover { color: var(--nav-bg); }
+ 
+    /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+ 
+    /* Hide top bar links section at medium screens */
+    @media (max-width: 900px) {
+      .top-links { display: none; }
+      .top-section:nth-child(3) { display: none; }
+    }
+ 
+    /* Collapse 2nd navbar to hamburger when it gets tight */
+    @media (max-width: 860px) {
+      .main-nav .nav-inner { display: none; }
+      .main-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 16px;
+        min-height: 46px;
+      }
+      .hamburger { display: flex; align-items: center; justify-content: center; }
+    }
+ 
+    /* Shrink search bar on smaller screens */
+    @media (max-width: 700px) {
+      .search-wrap { width: 150px; }
+      .top-bar-inner { padding: 0 24px; }
+    }
+ 
+    /* Mobile: stack top bar into 2 rows */
+    @media (max-width: 580px) {
+      .top-bar-inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 16px;
+        gap: 8px;
+        justify-content: space-between;
+      }
+ 
+      /* Row 1: Logo + Icons side by side */
+      .top-section:nth-child(1) { order: 1; justify-content: flex-start; }
+      .top-section:nth-child(4) { order: 2; justify-content: flex-end; }
+ 
+      /* Row 2: Search full width */
+      .top-section:nth-child(2) { order: 3; width: 100%; justify-content: flex-start; }
+      .top-section:nth-child(2) .search-wrap { width: 100%; }
+ 
+      .top-section:nth-child(3) { display: none; }
+      .logo { font-size: 1.8rem; }
+    }
+ 
+    /* prevent dropdown overflow on smaller screens */
+    @media (max-width: 880px) {
+      .dropdown { width: 95vw; }
+      .dropdown-image { width: 180px; }
+      .dropdown-image img { height: 130px; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ══════════════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════════════ -->
+<header class="top-bar">
+  <div class="top-bar-inner">
+ 
+    <!-- Section 1: Logo -->
+    <div class="top-section">
+      <a class="logo" href="#"><span>AERO</span></a>
+    </div>
+ 
+    <!-- Section 2: Search -->
+    <div class="top-section">
+      <div class="search-wrap">
+        <input type="text" placeholder="Søk etter produkter" aria-label="Søk" />
+        <button aria-label="Søk">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+ 
+    <!-- Section 3: Nav links -->
+    <div class="top-section">
+      <nav class="top-links">
+        <a href="#">Inspirasjon/blogg</a>
+        <a href="#">Om oss</a>
+        <a href="#">Kontakt oss</a>
+      </nav>
+    </div>
+ 
+    <!-- Section 4: Icons -->
+    <div class="top-section">
+      <div class="top-icons">
+        <a href="#" aria-label="Min konto">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="#" aria-label="Handlekurv">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </a>
+      </div>
+    </div>
+ 
+  </div>
+</header>
+ 
+<!-- ══════════════════════════════════════════════
+     MAIN NAV
+══════════════════════════════════════════════ -->
+<nav class="main-nav" id="mainNav">
+  <ul class="nav-inner" role="menubar">
+ 
+    <!-- Flame Paint -->
+    <li class="nav-item" role="none">
+      <button role="menuitem" aria-haspopup="true" aria-expanded="false">
+        Flame Paint
+        <svg class="chevron" viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg>
+      </button>
+      <div class="dropdown" role="menu">
+      <div class="dropdown-banner">
+        <img src="/Flame_Paint.jpg" alt="Spray Cans" />
+        <span class="dropdown-banner-label">FLAME</span>
+      </div>
+        <div class="dropdown-body">
+          <div class="dropdown-col">
+            <h4>Ml</h4>
+            <ul>
+              <li><a href="#">400ml Cans</a></li>
+              <li><a href="#">500ml Cans</a></li>
+              <li><a href="#">600ml Cans</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Tech Sprays</h4>
+            <ul>
+              <li><a href="#">Standard</a></li>
+              <li><a href="#">Blacks & Matts</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Effect Sprays</h4>
+            <ul>
+              <li><a href="#">Transparent & Neon</a></li>
+              <li><a href="#">Metallics</a></li>
+              <li><a href="#">Booster</a></li>
+            </ul>
+          </div>
+          
+          <div class="dropdown-col">
+            <h4>Limited Edition</h4>
+            <!-- 
+            <ul>
+              <li><a href="#">Black Artist Series</a></li>
+              <li><a href="#">Black Bräu</a></li>
+              <li><a href="#">Collabo Series</a></li>
+              <li><a href="#">Iconic Series</a></li>
+              <li><a href="#">Special Series</a></li>
+              <li><a href="#">Emojivandals Series</a></li>
+            </ul>
+            -->
+          </div>
+        </div>
+      </div>
+    </li>
+ 
+    <!-- Kobra Paint -->
+    <li class="nav-item" role="none">
+      <button role="menuitem" aria-haspopup="true" aria-expanded="false">
+        Kobra Paint
+        <svg class="chevron" viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg>
+      </button>
+      <div class="dropdown" role="menu">
+      <div class="dropdown-banner">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80" alt="Markers & Inks" />
+        <span class="dropdown-banner-label">Kobra</span>
+      </div>
+        <div class="dropdown-body">
+          <div class="dropdown-col">
+            <h4>Ml</h4>
+            <ul>
+              <li><a href="#">400ml Cans</a></li>
+              <li><a href="#">600ml Cans</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Tech Sprays</h4>
+            <ul>
+              <li><a href="#">Standard</a></li>
+              <li><a href="#">Primers</a></li>
+              <li><a href="#">Big / High Coverage</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Effect Sprays</h4>
+            <ul>
+              <li><a href="#">Fluorescent</a></li>
+              <li><a href="#">Metallics</a></li>
+              <li><a href="#">Varnishes</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Limited Edition</h4>
+            <ul>
+              <li><a href="#">Artist Edition</a></li>
+              <li><a href="#">Series Edition</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+ 
+    <!-- Loop Color -->
+    <li class="nav-item" role="none">
+      <button role="menuitem" aria-haspopup="true" aria-expanded="false">
+        Loop Color
+        <svg class="chevron" viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg>
+      </button>
+      <div class="dropdown" role="menu">
+      <div class="dropdown-banner">
+        <img src="https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=1200&q=80" alt="Drawing" />
+        <span class="dropdown-banner-label">LOOP</span>
+      </div>
+        <div class="dropdown-body">
+          <div class="dropdown-col">
+            <h4>Ml</h4>
+            <ul>
+              <li><a href="#">200ml Cans</a></li>
+              <li><a href="#">400ml Cans</a></li>
+              <li><a href="#">600ml Cans</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Tech Sprays</h4>
+            <ul>
+              <li><a href="#">Standard</a></li>
+              <li><a href="#">Primers</a></li>
+              <li><a href="#">Cleaning</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Effect Sprays</h4>
+            <ul>
+              <li><a href="#">Fluorescent</a></li>
+              <li><a href="#">Metallics</a></li>
+              <li><a href="#">Varnishes</a></li>
+              <li><a href="#">Specialty</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Limited Edition</h4>
+            <ul>
+              <li><a href="#">Artist Edition</a></li>
+              <li><a href="#">Series Edition</a></li>
+              <li><a href="#">Brand Edition</a></li>
+              <li><a href="#">Event Edition</a></li>
+              <li><a href="#">Concept Edition</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+ 
+    <!-- Molotow -->
+    <li class="nav-item" role="none">
+      <button role="menuitem" aria-haspopup="true" aria-expanded="false">
+        Accessories
+        <svg class="chevron" viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg>
+      </button>
+      <div class="dropdown" role="menu">
+      <div class="dropdown-banner">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Accessories" />
+        <span class="dropdown-banner-label">Accessories</span>
+      </div>
+        <div class="dropdown-body">
+          <div class="dropdown-col">
+            <h4>Caps &amp; Nozzles</h4>
+            <ul>
+              <li><a href="#">Skinny Cap</a></li>
+              <li><a href="#">NY Fat Cap</a></li>
+              <li><a href="#">Level 5 Cap</a></li>
+              <li><a href="#">Cap Sets</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Protection</h4>
+            <ul>
+              <li><a href="#">Gloves</a></li>
+              <li><a href="#">Masks</a></li>
+              <li><a href="#">Safety Goggles</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Tools</h4>
+            <ul>
+              <li><a href="#">Knives</a></li>
+              <li><a href="#">Rollers</a></li>
+              <li><a href="#">Brushes</a></li>
+              <li><a href="#">Tape</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+ 
+    <!-- BRANDS -->
+    <li class="nav-item" role="none">
+      <button role="menuitem" aria-haspopup="true" aria-expanded="false">
+        Brands
+        <svg class="chevron" viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg>
+      </button>
+      <div class="dropdown" role="menu">
+      <div class="dropdown-banner">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80" alt="Brands" />
+        <span class="dropdown-banner-label">Brands</span>
+      </div>
+        <div class="dropdown-body">
+          <div class="dropdown-col">
+            <h4>Spray Paint</h4>
+            <ul>
+              <li><a href="#">Montana Cans</a></li>
+              <li><a href="#">Molotow</a></li>
+              <li><a href="#">Ironlak</a></li>
+              <li><a href="#">Loop Colors</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Markers</h4>
+            <ul>
+              <li><a href="#">OTR</a></li>
+              <li><a href="#">Posca</a></li>
+              <li><a href="#">Sakura</a></li>
+              <li><a href="#">Krink</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <h4>Clothing</h4>
+            <ul>
+              <li><a href="#">Montana Wear</a></li>
+              <li><a href="#">Wrung</a></li>
+              <li><a href="#">Grimey</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+ 
+    <!-- UPCOMING -->
+    <li class="nav-item" role="none">
+      <a href="#" role="menuitem" style="color:#f39c12; font-weight:800;">Upcoming</a>
+    </li>
+ 
+    <!-- SALE -->
+    <li class="nav-item" role="none">
+      <a href="#" role="menuitem" style="color:#e8334a; font-weight:800;">Sale</a>
+    </li>
+ 
+    <!-- NEW -->
+    <li class="nav-item" role="none">
+      <a href="#" role="menuitem" style="color:#00bcd4; font-weight:800;">New</a>
+    </li>
+ 
+  </ul>
+ 
+  <!-- Hamburger (mobile only) -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Åpne meny">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</nav>
+ 
+<!-- ══════════════════════════════════════════════
+     MOBILE MENU
+══════════════════════════════════════════════ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-panel">
+ 
+    <div class="mobile-header">
+      <a class="logo" href="#"><span>AERO</span></a>
+      <button class="mobile-close" id="mobileClose" aria-label="Lukk meny">&times;</button>
+    </div>
+    <div class="mobile-search">
+      <input type="text" placeholder="Søk etter produkter" />
+    </div>
+ 
+    <div class="mobile-pages">
+ 
+      <!-- ── LEVEL 1: Main ── -->
+      <div class="mobile-page active" id="mob-page-main">
+        <button class="mobile-nav-item" data-target="mob-page-spray">Spray Cans<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-markers">Markers &amp; Inks<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-drawing">Drawing<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-accessories">Accessories<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-brands">Brands<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <a href="#" class="mobile-nav-item" style="color:#f39c12;">Upcoming</a>
+        <a href="#" class="mobile-nav-item" style="color:#e8334a;">Sale</a>
+        <a href="#" class="mobile-nav-item" style="color:#00bcd4;">New</a>
+        <div class="mobile-extra">
+          <a href="#">Inspirasjon/blogg</a>
+          <a href="#">Om oss</a>
+          <a href="#">Kontakt oss</a>
+        </div>
+      </div>
+ 
+      <!-- ── LEVEL 2: Spray Cans ── -->
+      <div class="mobile-page hidden-right" id="mob-page-spray">
+        <button class="mobile-back" data-back="mob-page-main"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Back</button>
+        <a href="#" class="mobile-sub-title">Spray Cans</a>
+        <button class="mobile-nav-item" data-target="mob-page-spray-paint">Spray Paint<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-spray-tech">Tech Sprays<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-spray-effect">Effect Sprays<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-spray-limited">Limited Edition<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-spray-specials">Specials<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+      </div>
+ 
+      <!-- ── LEVEL 3: Spray Paint ── -->
+      <div class="mobile-page hidden-right" id="mob-page-spray-paint">
+        <button class="mobile-back" data-back="mob-page-spray"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Spray Cans</button>
+        <a href="#" class="mobile-sub-title">Spray Paint</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">50ml cans</a></li>
+          <li><a href="#">150ml cans</a></li>
+          <li><a href="#">400ml cans</a></li>
+          <li><a href="#">500ml cans</a></li>
+          <li><a href="#">600ml cans</a></li>
+          <li><a href="#">750ml cans</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 3: Tech Sprays ── -->
+      <div class="mobile-page hidden-right" id="mob-page-spray-tech">
+        <button class="mobile-back" data-back="mob-page-spray"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Spray Cans</button>
+        <a href="#" class="mobile-sub-title">Tech Sprays</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Texture</a></li>
+          <li><a href="#">Primer</a></li>
+          <li><a href="#">Varnish</a></li>
+          <li><a href="#">Acetone</a></li>
+          <li><a href="#">Remover</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 3: Effect Sprays ── -->
+      <div class="mobile-page hidden-right" id="mob-page-spray-effect">
+        <button class="mobile-back" data-back="mob-page-spray"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Spray Cans</button>
+        <a href="#" class="mobile-sub-title">Effect Sprays</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Concrete</a></li>
+          <li><a href="#">Crackle</a></li>
+          <li><a href="#">Rust</a></li>
+          <li><a href="#">Vintage</a></li>
+          <li><a href="#">Glitter</a></li>
+          <li><a href="#">Hologram</a></li>
+          <li><a href="#">UV-Effect</a></li>
+          <li><a href="#">Nightglow</a></li>
+          <li><a href="#">Metallic</a></li>
+          <li><a href="#">Marble</a></li>
+          <li><a href="#">Granit</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 3: Limited Edition ── -->
+      <div class="mobile-page hidden-right" id="mob-page-spray-limited">
+        <button class="mobile-back" data-back="mob-page-spray"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Spray Cans</button>
+        <a href="#" class="mobile-sub-title">Limited Edition</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Black Artist Series</a></li>
+          <li><a href="#">Black Bräu</a></li>
+          <li><a href="#">Collabo Series</a></li>
+          <li><a href="#">Iconic Series</a></li>
+          <li><a href="#">Special Series</a></li>
+          <li><a href="#">Emojivandals Series</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 3: Specials ── -->
+      <div class="mobile-page hidden-right" id="mob-page-spray-specials">
+        <button class="mobile-back" data-back="mob-page-spray"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Spray Cans</button>
+        <a href="#" class="mobile-sub-title">Specials</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Waterbased</a></li>
+          <li><a href="#">Fluorescent</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 2: Markers & Inks ── -->
+      <div class="mobile-page hidden-right" id="mob-page-markers">
+        <button class="mobile-back" data-back="mob-page-main"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Back</button>
+        <a href="#" class="mobile-sub-title">Markers &amp; Inks</a>
+        <button class="mobile-nav-item" data-target="mob-page-markers-montana">Montana Markers<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-markers-otr">OTR Markers<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-markers-refill">Refill Inks<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-markers-montana">
+        <button class="mobile-back" data-back="mob-page-markers"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Markers &amp; Inks</button>
+        <a href="#" class="mobile-sub-title">Montana Markers</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">ACRYLIC Marker 0.7mm</a></li>
+          <li><a href="#">ACRYLIC Marker 2mm</a></li>
+          <li><a href="#">ACRYLIC Marker 15mm</a></li>
+          <li><a href="#">WATER BASED Marker 1mm</a></li>
+          <li><a href="#">WATER BASED Marker 5mm</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-markers-otr">
+        <button class="mobile-back" data-back="mob-page-markers"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Markers &amp; Inks</button>
+        <a href="#" class="mobile-sub-title">OTR Markers</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">OTR.001 Flow Pen</a></li>
+          <li><a href="#">OTR.052 Drip</a></li>
+          <li><a href="#">OTR Ink</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-markers-refill">
+        <button class="mobile-back" data-back="mob-page-markers"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Markers &amp; Inks</button>
+        <a href="#" class="mobile-sub-title">Refill Inks</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Montana Acrylic Refill</a></li>
+          <li><a href="#">Montana Water-Based Refill</a></li>
+          <li><a href="#">OTR.901 Refill Ink</a></li>
+          <li><a href="#">OTR.902 Refill Ink</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 2: Drawing ── -->
+      <div class="mobile-page hidden-right" id="mob-page-drawing">
+        <button class="mobile-back" data-back="mob-page-main"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Back</button>
+        <a href="#" class="mobile-sub-title">Drawing</a>
+        <button class="mobile-nav-item" data-target="mob-page-drawing-sketch">Sketchbooks<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-drawing-tools">Drawing Tools<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-drawing-paint">Paint<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-drawing-sketch">
+        <button class="mobile-back" data-back="mob-page-drawing"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Drawing</button>
+        <a href="#" class="mobile-sub-title">Sketchbooks</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">A4 Sketchbook</a></li>
+          <li><a href="#">A5 Sketchbook</a></li>
+          <li><a href="#">Blackbook A4</a></li>
+          <li><a href="#">Blackbook A5</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-drawing-tools">
+        <button class="mobile-back" data-back="mob-page-drawing"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Drawing</button>
+        <a href="#" class="mobile-sub-title">Drawing Tools</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Pencils</a></li>
+          <li><a href="#">Fine Liners</a></li>
+          <li><a href="#">Brush Pens</a></li>
+          <li><a href="#">Stencils</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-drawing-paint">
+        <button class="mobile-back" data-back="mob-page-drawing"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Drawing</button>
+        <a href="#" class="mobile-sub-title">Paint</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Montana ACRYLIC Paint 60ml</a></li>
+          <li><a href="#">Montana ACRYLIC Paint 500ml</a></li>
+          <li><a href="#">Montana ACRYLIC Paint 1000ml</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 2: Accessories ── -->
+      <div class="mobile-page hidden-right" id="mob-page-accessories">
+        <button class="mobile-back" data-back="mob-page-main"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Back</button>
+        <a href="#" class="mobile-sub-title">Accessories</a>
+        <button class="mobile-nav-item" data-target="mob-page-acc-caps">Caps &amp; Nozzles<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-acc-protection">Protection<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-acc-tools">Tools<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-acc-caps">
+        <button class="mobile-back" data-back="mob-page-accessories"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Accessories</button>
+        <a href="#" class="mobile-sub-title">Caps &amp; Nozzles</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Skinny Cap</a></li>
+          <li><a href="#">NY Fat Cap</a></li>
+          <li><a href="#">Level 5 Cap</a></li>
+          <li><a href="#">Cap Sets</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-acc-protection">
+        <button class="mobile-back" data-back="mob-page-accessories"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Accessories</button>
+        <a href="#" class="mobile-sub-title">Protection</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Gloves</a></li>
+          <li><a href="#">Masks</a></li>
+          <li><a href="#">Safety Goggles</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-acc-tools">
+        <button class="mobile-back" data-back="mob-page-accessories"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Accessories</button>
+        <a href="#" class="mobile-sub-title">Tools</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Knives</a></li>
+          <li><a href="#">Rollers</a></li>
+          <li><a href="#">Brushes</a></li>
+          <li><a href="#">Tape</a></li>
+        </ul></div>
+      </div>
+ 
+      <!-- ── LEVEL 2: Brands ── -->
+      <div class="mobile-page hidden-right" id="mob-page-brands">
+        <button class="mobile-back" data-back="mob-page-main"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Back</button>
+        <a href="#" class="mobile-sub-title">Brands</a>
+        <button class="mobile-nav-item" data-target="mob-page-brands-spray">Spray Paint<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-brands-markers">Markers<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+        <button class="mobile-nav-item" data-target="mob-page-brands-clothing">Clothing<svg viewBox="0 0 10 6" style="transform:rotate(-90deg)"><polyline points="1 1 5 5 9 1"/></svg></button>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-brands-spray">
+        <button class="mobile-back" data-back="mob-page-brands"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Brands</button>
+        <a href="#" class="mobile-sub-title">Spray Paint Brands</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Montana Cans</a></li>
+          <li><a href="#">Molotow</a></li>
+          <li><a href="#">Ironlak</a></li>
+          <li><a href="#">Loop Colors</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-brands-markers">
+        <button class="mobile-back" data-back="mob-page-brands"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Brands</button>
+        <a href="#" class="mobile-sub-title">Marker Brands</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">OTR</a></li>
+          <li><a href="#">Posca</a></li>
+          <li><a href="#">Sakura</a></li>
+          <li><a href="#">Krink</a></li>
+        </ul></div>
+      </div>
+ 
+      <div class="mobile-page hidden-right" id="mob-page-brands-clothing">
+        <button class="mobile-back" data-back="mob-page-brands"><svg viewBox="0 0 24 14"><polyline points="7 1 1 7 7 13"/><line x1="1" y1="7" x2="23" y2="7"/></svg>Brands</button>
+        <a href="#" class="mobile-sub-title">Clothing Brands</a>
+        <div class="mobile-sub-section"><ul>
+          <li><a href="#">Montana Wear</a></li>
+          <li><a href="#">Wrung</a></li>
+          <li><a href="#">Grimey</a></li>
+        </ul></div>
+      </div>
+ 
+    </div><!-- /mobile-pages -->
+  </div><!-- /mobile-panel -->
+</div>
+ 
+<!-- Demo content -->
+<div style="padding:60px 40px;text-align:center;color:#888;font-family:'Barlow',sans-serif;">
+  <p style="font-size:1.1rem;">Hover over a menu item to see the dropdown</p>
+</div>
+ 
+<script>
+  // ── Desktop dropdowns ──────────────────────────────────────────────────
+  const navItems = document.querySelectorAll('.nav-item');
+  const mainNav  = document.getElementById('mainNav');
+ 
+  function positionDropdown(item) {
+    const dropdown = item.querySelector('.dropdown');
+    if (!dropdown) return;
+    const navRect = mainNav.getBoundingClientRect();
+    dropdown.style.top = (navRect.bottom) + 'px';
+  }
+ 
+  navItems.forEach(item => {
+    const btn = item.querySelector('button[aria-haspopup]');
+    if (!btn) return;
+ 
+    item.addEventListener('mouseenter', () => { positionDropdown(item); openItem(item); });
+    item.addEventListener('mouseleave', () => closeItem(item));
+    btn.addEventListener('click', () => {
+      item.classList.contains('open') ? closeItem(item) : (positionDropdown(item), openItem(item));
+    });
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeItem(item);
+    });
+  });
+ 
+  function openItem(item) {
+    navItems.forEach(i => { if (i !== item) closeItem(i); });
+    item.classList.add('open');
+    const btn = item.querySelector('button[aria-haspopup]');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+  }
+  function closeItem(item) {
+    item.classList.remove('open');
+    const btn = item.querySelector('button[aria-haspopup]');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
+ 
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-item')) navItems.forEach(closeItem);
+  });
+ 
+  // ── Mobile menu ────────────────────────────────────────────────────────
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu   = document.getElementById('mobileMenu');
+  const mobileClose  = document.getElementById('mobileClose');
+ 
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+ 
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // reset all pages back to main after close animation
+    setTimeout(() => {
+      document.querySelectorAll('.mobile-page').forEach(p => {
+        p.classList.remove('active', 'hidden-left', 'hidden-right');
+      });
+      document.getElementById('mob-page-main').classList.add('active');
+      pageHistory.length = 0;
+      pageHistory.push('mob-page-main');
+    }, 350);
+  }
+ 
+  mobileClose.addEventListener('click', closeMobile);
+  mobileMenu.addEventListener('click', e => {
+    if (e.target === mobileMenu) closeMobile();
+  });
+ 
+  // Drill-down navigation
+  const pageHistory = ['mob-page-main'];
+ 
+  function navigateTo(targetId, isBack) {
+    const allPages = document.querySelectorAll('.mobile-page');
+    const current  = document.querySelector('.mobile-page.active');
+    const target   = document.getElementById(targetId);
+    if (!target || target === current) return;
+ 
+    const goingForward = !isBack;
+ 
+    allPages.forEach(p => {
+      if (p === current) {
+        p.classList.remove('active');
+        p.classList.add(goingForward ? 'hidden-left' : 'hidden-right');
+      } else if (p === target) {
+        p.classList.remove('hidden-right', 'hidden-left');
+        p.classList.add('active');
+        p.scrollTop = 0;
+      }
+    });
+ 
+    if (goingForward) {
+      pageHistory.push(targetId);
+    } else {
+      pageHistory.pop();
+    }
+  }
+ 
+  // Forward — nav items with data-target
+  document.querySelectorAll('.mobile-nav-item[data-target]').forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.dataset.target, false));
+  });
+ 
+  // Back buttons
+  document.querySelectorAll('.mobile-back').forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.dataset.back, true));
+  });
+</script>
+</body>
+</html>
